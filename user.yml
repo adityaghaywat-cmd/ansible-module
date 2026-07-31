@@ -1,0 +1,15 @@
+---
+- hosts: dev
+  become: yes
+
+  tasks:
+    - name: Create five users
+      user:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - user1
+        - user2
+        - user3
+        - user4
+        - user5
