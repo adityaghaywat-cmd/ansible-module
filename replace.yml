@@ -1,0 +1,10 @@
+---
+  - hosts: dev
+    connection: ssh
+
+    tasks:
+      - name: Example Replace
+        replace:
+          path: /root/my-ansa/file5
+          regexp: 'listen 80'
+          replace: 'listen 8080
