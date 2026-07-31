@@ -1,0 +1,15 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Install httpd
+      command: yum install httpd -y
+
+    - name: start service
+      service:
+        name: httpd
+
+        state: stopped
+
+        enabled: yes
