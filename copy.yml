@@ -10,3 +10,22 @@
           owner: krishna
           group: krishna
           mode: '0777'
+
+
+
+
+
+          
+---
+  - hosts: dev
+    connection: ssh
+
+    tasks:
+    - name: copy a file
+      file:
+        psth: /root/ansi/file1
+        state: touch
+
+
+
+
