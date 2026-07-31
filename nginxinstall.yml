@@ -47,4 +47,39 @@
         state: started
         enabled: true
 
+
+
+
+
+
+
+
+
+
+---
+- hosts: dev
+  become: yes
+
+  tasks:
+    - name: Clone Git repository
+      ansible.builtin.git:
+        repo: "https://github.com/adityaghaywat-cmd/html.project.git"
+        dest: /var/www/html
+        version: main
+
+    - name: Allow HTTP service in firewalld
+      ansible.posix.firewalld:
+        service: http
+        permanent: true
+        state: enabled
+        immediate: true
+
+    - name: Start and enable nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+~                                   
+
+
         
