@@ -22,3 +22,29 @@
         owner: nginx
         group: nginx
         mode: '0755'
+
+
+
+
+
+
+
+
+---
+- hosts: dev
+  become: yes
+
+  tasks:
+    - name: Clone Git repository
+      ansible.builtin.git:
+        repo: "https://github.com/adityaghaywat-cmd/html.project.git"
+        dest: /var/www/html
+        version: main
+
+    - name: Start and enable nginx
+      ansible.builtin.service:
+        name: nginx
+        state: started
+        enabled: true
+
+        
