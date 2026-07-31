@@ -1,0 +1,38 @@
+---
+- hosts: dev
+  become: yes
+
+  vars:
+    tomcat_version: "9.0.115"
+    tomcat_home: "/opt/tomcat"
+
+  tasks:
+
+    - name: Install Java
+      yum:
+        name: java-17-openjdk
+        state: present
+
+    - name: Install wget
+      yum:
+        name: wget
+        state: present
+
+    - name: Download Tomcat
+      shell: |
+        wget -O /tmp/tomcat.tar.gz \
+        https://archive.apache.org/dist/tomcat/tomcat-9/v9.0.115/bin/apache-tomcat-9.0.115.tar.gz
+
+    - name: Extract Tomcat
+      unarchive:
+        src: /tmp/tomcat.tar.gz
+        dest: /opt/
+        remote_src: yes
+
+    - name: Rename Tomcat
+      shell: mv /opt/apache-tomcat-9.0.115 {{ tomcat_home }}
+      args:
+        creates: "{{ tomcat_home }}"
+
+    - name: Start Tomcat
+      shell: nohup {{ tomcat_home }}/bin/startup.sh
