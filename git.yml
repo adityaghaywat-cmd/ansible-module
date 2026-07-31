@@ -27,7 +27,24 @@
         repo: https://github.com/adityaghaywat-cmd/flipkart.git
         dest: /root/my-ansa/demo1
         version: men
-        update: yes
+        update: yes---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: git integration
+      ansible.builtin.git:
+        repo: 'https://github.com/adityaghaywat-cmd/html.project.git'
+        dest: /var/www/html
+        version: main
+
+
+
+
+
+
+
+        
 
 
 
