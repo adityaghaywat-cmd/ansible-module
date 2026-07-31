@@ -1,0 +1,18 @@
+---
+  - hosts: dev
+    connection: ssh
+
+    tasks:
+
+
+      - name: Clone git repo
+        git:
+          repo: https://github.com/adityaghaywat-cmd/flipkart.git
+          dest: /root/my-ansa/demo2
+          version: men
+          update: yes
+          key_file: /root/token
+~                                                                                         
+~                                                                                         
+~                                                                                         
+~                                                    
