@@ -10,7 +10,32 @@
           owner: krishna
           group: krishna
           mode: '0755'
-~                                                                                         
+
+
+
+
+---
+- hosts: dev
+  connection: ssh
+
+
+  tasks:
+    - name: copy Template file
+      template:
+        src: tomcat-user2.xml
+        dest: /root/ansi
+
+
+
+
+
+
+
+
+          
+~                                  
+
+
 ~                                                                                         
 ~                                                                                         
 ~                                                                                         
