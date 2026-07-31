@@ -1,0 +1,23 @@
+---
+  - hosts: dev
+    connection: ssh
+
+    tasks:
+      - name: file module -create file with permission and owner file
+
+        file:
+          path: /root/my-ansa/krishna2.pdf
+          state: touch
+          owner: krishna
+          group: krishna
+          mode: "0555"
+
+      - name: Delete file
+
+        file:
+          path: /root/my-ansa/file2
+          state: absent
+
+~                                                                                         
+~                                                                                         
+~                 
