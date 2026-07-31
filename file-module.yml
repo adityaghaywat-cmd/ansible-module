@@ -12,11 +12,36 @@
           group: krishna
           mode: "0555"
 
-      - name: Delete file
+
+
+
+
+
+          
+
+      - name: Delete file---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: create a file and write content
+      copy:
+        dest: /root/demo1/demo.pdf
+        content:
+              Hello world
+              i am fine
+~                           
 
         file:
           path: /root/my-ansa/file2
           state: absent
+
+
+
+
+
+
+          
 
 ~                                                                                         
 ~                                                                                         
