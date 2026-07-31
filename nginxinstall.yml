@@ -79,6 +79,50 @@
         name: nginx
         state: started
         enabled: true
+
+
+
+
+
+
+
+
+
+---
+- hosts: dev
+  become: yes
+
+  tasks:
+    - name: Create project directory
+      file:
+        path: /var/www/html/project1
+        state: directory
+        mode: '0755'
+
+    - name: Copy index.html
+      copy:
+        src: /root/project1/index.html
+        dest: /var/www/html/index.html
+        mode: '0644'
+
+    - name: Allow HTTP port 80
+      firewalld:
+        port: 80/tcp
+        permanent: yes
+        state: enabled
+        immediate: yes
+
+    - name: Start nginx
+      service:
+        name: nginx
+        state: started
+                                         
+
+
+
+
+
+        
 ~                                   
 
 
