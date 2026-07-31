@@ -10,3 +10,54 @@
           state: present
 
 ~
+
+
+
+
+
+
+
+---
+- name: installtion
+  hosts: dev
+  connection: ssh
+
+
+  tasks:
+    - name: Installing tree packege
+      action: yum name=tree state=present
+
+
+
+
+
+
+
+---
+- hosts: dev
+  connection: ssh
+
+
+
+
+
+  vars:
+    pack:
+
+
+
+  tasks:
+    - name: Installing/Removing {{pack}} package
+      command: yum remove {{pack}} -y
+~                                   
+
+
+
+      
+
+
+
+
+
+
+
