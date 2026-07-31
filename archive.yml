@@ -1,0 +1,10 @@
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Archiving
+      community.general.archive:
+        path: /root/ansible/etc
+        dest: /root/ansible/etc.tar.gz
+        format: gz
