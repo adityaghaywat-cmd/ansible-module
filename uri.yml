@@ -14,3 +14,35 @@
     - name: Print product data
       ansible.builtin.debug:
         var: product.json
+
+
+
+
+
+        
+
+
+---
+- hosts: dev
+  become: yes
+
+  tasks:
+    - name: get uri example
+      uri:
+        url: https://dummyjson.com/products/1
+        method: GET
+        return_content: yes
+        validate_certs: no
+      register: product
+
+    - name: Print product data
+      debug:
+        var: product.json
+~                                                                                                        
+~                                  
+
+
+
+
+
+
