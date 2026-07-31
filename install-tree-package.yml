@@ -1,0 +1,12 @@
+---
+- name: practicing Ansible
+  hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Remove tree
+      yum:
+          name: tree
+          state: present
+
+~
