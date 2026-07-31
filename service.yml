@@ -15,3 +15,37 @@
           enabled: yes
           #daemon_reload: yes
 
+
+
+
+
+
+
+
+
+
+
+
+
+---
+- hosts: dev
+  connection: ssh
+
+  tasks:
+    - name: Install httpd
+      command: yum install httpd -y
+
+    - name: Start service
+      service:
+        name: httpd
+        state: started
+        state: stopped
+        state: restarted
+        enabled: yes
+        daemon_reload: yes
+
+
+
+
+          
+
