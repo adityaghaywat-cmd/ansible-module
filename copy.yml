@@ -1,0 +1,12 @@
+---
+  - hosts: dev
+    connection: ssh
+
+    tasks:
+      - name: Copy a file
+        copy:
+          src: file2
+          dest: /root/my-ansa/file2
+          owner: krishna
+          group: krishna
+          mode: '0777'
