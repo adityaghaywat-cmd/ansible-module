@@ -1,0 +1,16 @@
+---
+- hosts: dev
+  become: yes
+
+  tasks:
+    - name: Get uri example
+      ansible.builtin.uri:
+        url: https://dummyjson.com/products/2
+        method: GET
+        return_content: yes
+        validate_certs: no
+      register: product
+
+    - name: Print product data
+      ansible.builtin.debug:
+        var: product.json
