@@ -1,0 +1,11 @@
+---
+ - hosts: dev
+   connection: ssh
+
+   tasks:
+     - name: Cron job
+       cron:
+         name: run my script
+         minute: "*/5"
+         job: "/root/myscript.sh"
+~                             
