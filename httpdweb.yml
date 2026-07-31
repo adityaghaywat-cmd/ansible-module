@@ -40,3 +40,58 @@
         state: enabled
         immediate: yes
       when: ansible_os_family == "RedHat"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+- name: Deploy index.html to web server
+  hosts: dev
+  become: yes
+
+  tasks:
+    - name: Create index.html
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          <!DOCTYPE html>
+          <html>
+          <head>
+              <title>My Website</title>
+          </head>
+          <body>
+              <h1>Open Website</h1>
+              <p>Deployed using Ansible.</p>
+          </body>
+          </html>
+        owner: root
+        group: root
+        mode: '0644'
+
+      
