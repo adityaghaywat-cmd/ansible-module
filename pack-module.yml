@@ -1,0 +1,13 @@
+---
+  - hosts: dev
+    connection: ssh
+
+    tasks:
+      - name: Install multiple  package
+        package:
+          name:
+            - tree
+            - wget
+            - curl
+            - git
+          state: Present
