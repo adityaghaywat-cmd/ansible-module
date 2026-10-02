@@ -1,0 +1,36 @@
+---
+- name: Install Nexus
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install Java
+      dnf:
+        name: java-21-openjdk
+        state: present
+
+    - name: Download Nexus
+      get_url:
+        url: https://download.sonatype.com/nexus/3/nexus-3.94.1-06-unix.tar.gz
+        dest: /tmp/nexus.tar.gz
+
+    - name: Extract Nexus
+      unarchive:
+        src: /tmp/nexus.tar.gz
+        dest: /opt
+        remote_src: yes
+
+    - name: Create nexus user
+      user:
+        name: nexus
+
+    - name: Set ownership
+      file:
+        path: /opt/nexus-3.94.1-06
+        owner: nexus
+        group: nexus
+        recurse: yes
+
+    - name: Start Nexus
+      command: /opt/nexus-3.94.1-06/bin/nexus start
+      become_user: nexus
